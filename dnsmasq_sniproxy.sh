@@ -389,8 +389,11 @@ ready_install(){
         exit 1
     fi
     if check_sys packageManager yum; then
+        yum update -y
         error_detect_depends "yum -y install net-tools"
     elif check_sys packageManager apt; then
+    apt update -y
+    apt upgrade -y
         error_detect_depends "apt-get -y install net-tools"
     fi
     disable_selinux
